@@ -16,7 +16,7 @@ namespace mohpcf::display {
 
 using RequestBorderlessFn = void (*)(HWND window, bool on);
 
-// `binaries` = the game's Binaries folder (where the add-on and MoH2010.PCFix.ini live).
+// `binaries` = the game's Binaries folder (where the add-on and MoH2010.LazmFix.ini live).
 void initialize(const std::filesystem::path& binaries, RequestBorderlessFn request_borderless);
 
 // ReShade events.

@@ -21,7 +21,7 @@ for ($i = 0; $i -lt $Seconds; $i++) {
 }
 $p = Get-Process moh -ErrorAction SilentlyContinue
 if ($p) { "now: title='$($p.MainWindowTitle)' threads=$($p.Threads.Count) ws=$([int]($p.WorkingSet64/1MB))MB cpu=$([int]$p.CPU)s" }
-'--- MoH2010.PCFix.log'
-Get-Content (Join-Path $bin 'MoH2010.PCFix.log') -ErrorAction SilentlyContinue
+'--- MoH2010.LazmFix.log'
+Get-Content (Join-Path $bin 'MoH2010.LazmFix.log') -ErrorAction SilentlyContinue
 '--- ReShade.log (add-on lines)'
 Select-String -Path (Join-Path $bin 'ReShade.log') -Pattern 'add-on|addon|MoH2010|ERROR|Initializ' -ErrorAction SilentlyContinue | ForEach-Object { $_.Line }

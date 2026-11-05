@@ -1,17 +1,18 @@
-MoH 2010 PC Fix (beta) - Medal of Honor (2010) single player
+MoH 2010 LazmFix (beta) - Medal of Honor (2010) single player
 
-Full description, updates and bug reports: see the project page on GitHub.
+Full description, updates and bug reports / Описание, обновления и ошибки:
+https://github.com/LazmFix/MoH2010-LazmFix
 
 INSTALL
 1. Install ReShade "with full add-on support" (reshade.me) for Binaries\moh.exe, Direct3D 9.
 2. Extract this zip into the game folder (the one with Binaries and MOHAGame).
-3. Start the game from Steam. Home -> Add-ons -> MoH 2010 PC Fix for the settings.
+3. Start the game from Steam. Home -> Add-ons -> MoH 2010 LazmFix for the settings.
    If you never started the game before, start it a second time: the game creates its settings
    on its first start, and the mod applies its display and graphics settings from then on.
 
 UNINSTALL
-Delete from Binaries: dinput8.dll, MoH2010.PCFix.addon32, MoH2010.PCFix.ini, MoH2010.PCFix.log,
-MoH2010.NvProfile.exe (first press "Undo" under Anti-aliasing in the panel if you used it).
+Delete from Binaries: dinput8.dll, MoH2010.LazmFix.addon32, MoH2010.LazmFix.ini, MoH2010.LazmFix.log,
+MoH2010.LazmFix.NvProfile.exe (first press "Undo" under Anti-aliasing in the panel if you used it).
 Intro videos: Steam -> Verify integrity of game files.
 
 ---
@@ -19,11 +20,11 @@ Intro videos: Steam -> Verify integrity of game files.
 УСТАНОВКА
 1. Установите ReShade «with full add-on support» (reshade.me) для Binaries\moh.exe, Direct3D 9.
 2. Распакуйте этот zip в папку игры (ту, где Binaries и MOHAGame).
-3. Запустите игру из Steam. Home -> Дополнения -> MoH 2010 PC Fix — настройки.
+3. Запустите игру из Steam. Home -> Дополнения -> MoH 2010 LazmFix — настройки.
    Если вы ни разу не запускали игру, запустите её второй раз: файлы настроек игра создаёт
    при первом запуске, а настройки экрана и графики мод применяет начиная со следующего.
 
 УДАЛЕНИЕ
-Удалите из Binaries: dinput8.dll, MoH2010.PCFix.addon32, MoH2010.PCFix.ini, MoH2010.PCFix.log,
-MoH2010.NvProfile.exe (сначала нажмите «Отменить» в разделе «Сглаживание» панели, если пользовались).
+Удалите из Binaries: dinput8.dll, MoH2010.LazmFix.addon32, MoH2010.LazmFix.ini, MoH2010.LazmFix.log,
+MoH2010.LazmFix.NvProfile.exe (сначала нажмите «Отменить» в разделе «Сглаживание» панели, если пользовались).
 Заставки: Steam -> Проверить целостность файлов игры.

@@ -1,7 +1,7 @@
-// ReShade add-on front-end for MoH 2010 PC Fix: the settings panel (Home -> Add-ons).
+// ReShade add-on front-end for MoH 2010 LazmFix: the settings panel (Home -> Add-ons).
 //
 // The core is the dinput8.dll proxy next to moh.exe: it is loaded by the game itself and keeps working
-// without ReShade (settings from MoH2010.PCFix.ini). This add-on finds it (by full path, so never the
+// without ReShade (settings from MoH2010.LazmFix.ini). This add-on finds it (by full path, so never the
 // system dinput8.dll), shows its state, changes its settings, and turns an exclusive fullscreen
 // request into borderless.
 
@@ -20,7 +20,7 @@
 #include <fstream>
 #include <string>
 
-extern "C" __declspec(dllexport) const char* NAME = "MoH 2010 PC Fix";
+extern "C" __declspec(dllexport) const char* NAME = "MoH 2010 LazmFix";
 extern "C" __declspec(dllexport) const char* DESCRIPTION =
     "Medal of Honor (2010) single player: startup hang fix, borderless window, mouse, FOV, aiming, HUD and subtitle scaling.";
 
@@ -73,7 +73,7 @@ std::filesystem::path addon_directory() {
 }
 
 std::wstring fix_ini() {
-  static const std::wstring path = (addon_directory() / L"MoH2010.PCFix.ini").wstring();
+  static const std::wstring path = (addon_directory() / L"MoH2010.LazmFix.ini").wstring();
   return path;
 }
 
@@ -91,7 +91,7 @@ void ensure_core() {
   const auto path = addon_directory() / api::kCoreFileName;
   HMODULE core = GetModuleHandleW(path.c_str());
   if (core == nullptr) {
-    g_core_error = "dinput8.dll (MoH 2010 PC Fix) is not loaded from the game folder. Is it next to moh.exe?";
+    g_core_error = "dinput8.dll (MoH 2010 LazmFix) is not loaded from the game folder. Is it next to moh.exe?";
     return;
   }
   g_get_status = core_export<api::GetStatusFn>(core, "MohPcfGetStatus");
@@ -432,7 +432,7 @@ void draw_hud(const api::StatusV2& status) {
 }
 
 // ---- NVIDIA anti-aliasing -------------------------------------------------------------------------
-// The game's own AA option does nothing in the campaign. MoH2010.NvProfile.exe sets MSAA + sparse grid
+// The game's own AA option does nothing in the campaign. MoH2010.LazmFix.NvProfile.exe sets MSAA + sparse grid
 // supersampling in the NVIDIA profile of moh.exe (never the global profile); writing driver profiles
 // needs administrator rights, so it runs through a UAC prompt.
 
@@ -449,7 +449,7 @@ bool nvidia_present() {
 }
 
 void run_nv_profile(const wchar_t* arguments) {
-  const auto exe = addon_directory() / L"MoH2010.NvProfile.exe";
+  const auto exe = addon_directory() / L"MoH2010.LazmFix.NvProfile.exe";
   const std::wstring dir = addon_directory().wstring();
   SHELLEXECUTEINFOW info{};
   info.cbSize = sizeof(info);
@@ -464,7 +464,7 @@ void run_nv_profile(const wchar_t* arguments) {
 
 void draw_nvidia_aa() {
   std::error_code ec;
-  if (!nvidia_present() || !std::filesystem::exists(addon_directory() / L"MoH2010.NvProfile.exe", ec)) {
+  if (!nvidia_present() || !std::filesystem::exists(addon_directory() / L"MoH2010.LazmFix.NvProfile.exe", ec)) {
     return;
   }
   ImGui::SeparatorText(T("Anti-aliasing (NVIDIA)", "Сглаживание (NVIDIA)"));
@@ -487,9 +487,9 @@ void draw_nvidia_aa() {
                      "суперсэмплинг (SGSSAA), в том числе на листве и заборах. 2x — лёгкое, 4x — чётче, но тяжело в 4K. "
                      "Меняется только профиль драйвера «Medal of Honor» (не глобальный). Windows запросит права "
                      "администратора; после этого перезапустите игру. «Отменить» возвращает профиль как был."));
-  if (g_nv_log_watch.changed((addon_directory() / L"MoH2010.NvProfile.log").wstring(), ImGui::GetTime())) {
+  if (g_nv_log_watch.changed((addon_directory() / L"MoH2010.LazmFix.NvProfile.log").wstring(), ImGui::GetTime())) {
     // The summary line ("applied 2x MSAA + ...", "restored ...", or an error), not the setting list.
-    std::ifstream in(addon_directory() / L"MoH2010.NvProfile.log");
+    std::ifstream in(addon_directory() / L"MoH2010.LazmFix.NvProfile.log");
     g_nv_log.clear();
     for (std::string line; std::getline(in, line);) {
       if (!line.empty() && line[0] != ' ' && line.rfind("profile:", 0) != 0) {
@@ -542,8 +542,8 @@ void draw_info(const api::StatusV2& status) {
     }
     ImGui::EndTable();
   }
-  ImGui::TextDisabled("%s", T("Log: Binaries\\MoH2010.PCFix.log. Settings: Binaries\\MoH2010.PCFix.ini.",
-                              "Лог: Binaries\\MoH2010.PCFix.log. Настройки: Binaries\\MoH2010.PCFix.ini."));
+  ImGui::TextDisabled("%s", T("Log: Binaries\\MoH2010.LazmFix.log. Settings: Binaries\\MoH2010.LazmFix.ini.",
+                              "Лог: Binaries\\MoH2010.LazmFix.log. Настройки: Binaries\\MoH2010.LazmFix.ini."));
 }
 
 // ---- Panel ----------------------------------------------------------------------------------------
@@ -562,7 +562,7 @@ void draw_settings(reshade::api::effect_runtime*) {
   sync_sensitivity(status);
 
   // Language switch, top right.
-  ImGui::TextDisabled("MoH 2010 PC Fix %s beta", status.core_version);
+  ImGui::TextDisabled("MoH 2010 LazmFix %s beta", status.core_version);
   ImGui::SameLine(0.0F, -1.0F);
   const float width = ImGui::CalcTextSize("English | Русский", nullptr, false, -1.0F).x + 24.0F;
   const float right = ImGui::GetCursorPosX() + ImGui::GetContentRegionAvail().x - width;

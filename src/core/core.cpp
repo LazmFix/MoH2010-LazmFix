@@ -122,8 +122,8 @@ void read_game_version() {
 
 void start_once() {
   const std::wstring dir = module_directory(&__ImageBase);
-  g_ini_path = join_path(dir, L"MoH2010.PCFix.ini");
-  g_log.open(join_path(dir, L"MoH2010.PCFix.log"));
+  g_ini_path = join_path(dir, L"MoH2010.LazmFix.ini");
+  g_log.open(join_path(dir, L"MoH2010.LazmFix.log"));
 
   std::wstring exe_name = std::filesystem::path(process_exe_path()).filename().wstring();
   for (auto& c : exe_name) {
@@ -134,7 +134,7 @@ void start_once() {
   g_enabled = GetPrivateProfileIntW(L"Mouse", L"Enabled", 1, g_ini_path.c_str()) != 0;
   g_sens_x = clamp_sens(read_float(L"Mouse", L"SensitivityX", 1.0F));
   g_sens_y = clamp_sens(read_float(L"Mouse", L"SensitivityY", 1.0F));
-  g_log.info(format("MoH 2010 PC Fix %s in %s (version %s)", MOHPCF_VERSION, narrow(exe_name).c_str(), g_game_version));
+  g_log.info(format("MoH 2010 LazmFix %s in %s (version %s)", MOHPCF_VERSION, narrow(exe_name).c_str(), g_game_version));
   for (const std::string& line : startup::report()) {
     g_log.info(line);
   }

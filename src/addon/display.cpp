@@ -28,7 +28,7 @@ std::filesystem::path g_binaries;
 std::wstring g_fix_ini;
 RequestBorderlessFn g_request_borderless = nullptr;
 
-// [Display] WindowMode in MoH2010.PCFix.ini.
+// [Display] WindowMode in MoH2010.LazmFix.ini.
 enum WindowMode { kBorderless = 0, kFullscreen = 1, kWindowed = 2 };
 int g_window_mode = kBorderless;
 bool g_desktop_resolution = true;  // [Display] Resolution=desktop
@@ -304,7 +304,7 @@ void draw_mouse_tab() {
 
 void initialize(const std::filesystem::path& binaries, RequestBorderlessFn request_borderless) {
   g_binaries = binaries;
-  g_fix_ini = (binaries / L"MoH2010.PCFix.ini").wstring();
+  g_fix_ini = (binaries / L"MoH2010.LazmFix.ini").wstring();
   g_request_borderless = request_borderless;
   load_fix_settings();
   g_mode_at_start = g_window_mode;
@@ -331,12 +331,12 @@ bool on_create_swapchain(reshade::api::device_api, reshade::api::swapchain_desc&
     g_live.converted = true;
     g_live.refresh = 0.0F;
     modified = true;
-    std::snprintf(line, sizeof(line), "MoH 2010 PC Fix: exclusive fullscreen %ux%u -> borderless window", g_live.width, g_live.height);
+    std::snprintf(line, sizeof(line), "MoH 2010 LazmFix: exclusive fullscreen %ux%u -> borderless window", g_live.width, g_live.height);
   } else if (desc.fullscreen_state) {
     // Exclusive fullscreen: the monitor's highest refresh rate (D3D9 otherwise takes the default, often 60 Hz).
     const float hz = best_refresh(window, g_live.width, g_live.height);
     if (hz > desc.fullscreen_refresh_rate) {
-      std::snprintf(line, sizeof(line), "MoH 2010 PC Fix: exclusive fullscreen %ux%u at %.0f Hz", g_live.width, g_live.height, hz);
+      std::snprintf(line, sizeof(line), "MoH 2010 LazmFix: exclusive fullscreen %ux%u at %.0f Hz", g_live.width, g_live.height, hz);
       desc.fullscreen_refresh_rate = hz;
       g_live.refresh = hz;
       modified = true;

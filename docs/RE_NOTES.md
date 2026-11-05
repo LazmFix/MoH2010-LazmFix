@@ -250,3 +250,5 @@ MWR 3 = 0.066 deg = 12.015 units per count => multiplier 0.6866 at MouseSensitiv
   side), more at the sides. The weapon aim FOV gets the same conversion.
 - Removed for the release: the polling rate meter (second DirectInput mouse), the info overlay, the
   calibration hotkeys (injected counts) and the Ctrl+End / Ctrl+PgUp hotkeys.
+
+- Renamed: "MoH 2010 PC Fix" (MoH2010.PCFix.*) is now "MoH 2010 LazmFix" (MoH2010.LazmFix.*); tools\install.ps1 moves the old ini and NVIDIA profile backup and removes the old add-on.

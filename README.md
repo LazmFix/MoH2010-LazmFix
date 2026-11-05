@@ -1,8 +1,10 @@
-# MoH 2010 PC Fix
+# MoH 2010 LazmFix
 
 A fix and quality-of-life mod for the **Medal of Honor (2010) single-player campaign** on PC: the
 startup hang, borderless window at the desktop resolution, ultrawide support, 4K HUD and subtitles,
 mouse, field of view and more, with a settings panel in ReShade.
+
+Part of [LazmFix](https://github.com/LazmFix): my fixes for PC games.
 
 **[English](#english)** · **[Русский](#русский)**
 
@@ -41,7 +43,7 @@ mouse, field of view and more, with a settings panel in ReShade.
 - **Key names in English** in the game's hints ("WASD", not "ЦФЫВ" with a Russian layout).
 - **Anti-aliasing on NVIDIA.** The game's own AA option does nothing in the campaign. One click sets
   MSAA + sparse grid supersampling in the driver profile of the game (only that profile).
-- **Settings panel** in ReShade (Home → Add-ons → MoH 2010 PC Fix), in English and Russian.
+- **Settings panel** in ReShade (Home → Add-ons → MoH 2010 LazmFix), in English and Russian.
 
 The multiplayer is a separate program and is not affected.
 
@@ -61,20 +63,20 @@ The multiplayer is a separate program and is not affected.
    2. Run it, choose `Binaries\moh.exe` in the game folder.
    3. Choose **Direct3D 9**.
    4. Effects are optional: you can skip them all.
-3. Download `MoH2010-PCFix-<version>.zip` from [Releases](../../releases) and extract it **into the game
+3. Download `MoH2010-LazmFix-<version>.zip` from [Releases](../../releases) and extract it **into the game
    folder** (the one with `Binaries`). Four files go to `Binaries\`: `dinput8.dll`,
-   `MoH2010.PCFix.addon32`, `MoH2010.PCFix.ini`, `MoH2010.NvProfile.exe`.
+   `MoH2010.LazmFix.addon32`, `MoH2010.LazmFix.ini`, `MoH2010.LazmFix.NvProfile.exe`.
 4. Start the game from Steam. Steam may show the CD key window: close it. If you never started the game
    before, start it a second time: the game creates its settings files on its first start, and the mod
    applies its display and graphics settings from then on.
-5. Press **Home** in the game: ReShade's menu → **Add-ons** → **MoH 2010 PC Fix**. Hover over **(?)**
+5. Press **Home** in the game: ReShade's menu → **Add-ons** → **MoH 2010 LazmFix**. Hover over **(?)**
    for an explanation of each setting. Switch the language at the top right.
 
 ### Uninstall
 
 1. In the panel: Display → Anti-aliasing → **Undo**, if you used it (puts the NVIDIA profile back).
-2. Delete from `Binaries\`: `dinput8.dll`, `MoH2010.PCFix.addon32`, `MoH2010.PCFix.ini`,
-   `MoH2010.PCFix.log`, `MoH2010.NvProfile.exe` (and `MoH2010.NvProfile.*` files if present).
+2. Delete from `Binaries\`: `dinput8.dll`, `MoH2010.LazmFix.addon32`, `MoH2010.LazmFix.ini`,
+   `MoH2010.LazmFix.log`, `MoH2010.LazmFix.NvProfile.exe` (and `MoH2010.LazmFix.NvProfile.*` files if present).
 3. Intro videos: in Steam, Properties → Installed Files → **Verify integrity of game files**, or rename
    `MOHAGame\CookedMovies\*.vp6.skip` back to `*.vp6`.
 4. ReShade: run its installer again and choose Uninstall.
@@ -90,7 +92,7 @@ mod set; change them in the game menu or the panel.
 - Ultrawide was checked at 3440x1440 in a window on a 16:9 monitor. Pre-rendered videos stay 16:9.
 - The game itself crashed once in about ten hours ("pure virtual function call", inside the engine,
   right after a checkpoint save). The log and crash dump did not point at the mod.
-- Settings file and log: `Binaries\MoH2010.PCFix.ini`, `Binaries\MoH2010.PCFix.log`. Please attach the
+- Settings file and log: `Binaries\MoH2010.LazmFix.ini`, `Binaries\MoH2010.LazmFix.log`. Please attach the
   log to bug reports.
 
 ### Tested on
@@ -149,7 +151,7 @@ affiliated with EA.
 - **Названия клавиш на английском** в подсказках игры («WASD», а не «ЦФЫВ» при русской раскладке).
 - **Сглаживание на NVIDIA.** Своё сглаживание игры в кампании не работает. Одна кнопка включает MSAA +
   суперсэмплинг (SGSSAA) в профиле драйвера этой игры (только в нём).
-- **Панель настроек** в ReShade (Home → Дополнения → MoH 2010 PC Fix), на русском и английском.
+- **Панель настроек** в ReShade (Home → Дополнения → MoH 2010 LazmFix), на русском и английском.
 
 Мультиплеер — отдельная программа, мод его не затрагивает.
 
@@ -169,20 +171,20 @@ affiliated with EA.
    2. Запустите установщик и выберите `Binaries\moh.exe` в папке игры.
    3. Выберите **Direct3D 9**.
    4. Эффекты не обязательны, их можно пропустить.
-3. Скачайте `MoH2010-PCFix-<версия>.zip` в [Releases](../../releases) и распакуйте **в папку игры** (ту,
-   где `Binaries`). В `Binaries\` попадут четыре файла: `dinput8.dll`, `MoH2010.PCFix.addon32`,
-   `MoH2010.PCFix.ini`, `MoH2010.NvProfile.exe`.
+3. Скачайте `MoH2010-LazmFix-<версия>.zip` в [Releases](../../releases) и распакуйте **в папку игры** (ту,
+   где `Binaries`). В `Binaries\` попадут четыре файла: `dinput8.dll`, `MoH2010.LazmFix.addon32`,
+   `MoH2010.LazmFix.ini`, `MoH2010.LazmFix.NvProfile.exe`.
 4. Запустите игру из Steam. Steam может показать окно с CD-ключом — закройте его. Если вы ни разу не
    запускали игру, запустите её второй раз: файлы настроек игра создаёт при первом запуске, а настройки
    экрана и графики мод применяет начиная со следующего.
-5. В игре нажмите **Home**: меню ReShade → **Дополнения** → **MoH 2010 PC Fix**. Наведите на **(?)** —
+5. В игре нажмите **Home**: меню ReShade → **Дополнения** → **MoH 2010 LazmFix**. Наведите на **(?)** —
    появится пояснение к настройке. Язык переключается справа вверху.
 
 ### Удаление
 
 1. В панели: Экран → Сглаживание → **Отменить**, если пользовались (вернёт профиль NVIDIA).
-2. Удалите из `Binaries\`: `dinput8.dll`, `MoH2010.PCFix.addon32`, `MoH2010.PCFix.ini`,
-   `MoH2010.PCFix.log`, `MoH2010.NvProfile.exe` (и файлы `MoH2010.NvProfile.*`, если есть).
+2. Удалите из `Binaries\`: `dinput8.dll`, `MoH2010.LazmFix.addon32`, `MoH2010.LazmFix.ini`,
+   `MoH2010.LazmFix.log`, `MoH2010.LazmFix.NvProfile.exe` (и файлы `MoH2010.LazmFix.NvProfile.*`, если есть).
 3. Заставки: в Steam — Свойства → Установленные файлы → **Проверить целостность файлов игры**, или
    переименуйте `MOHAGame\CookedMovies\*.vp6.skip` обратно в `*.vp6`.
 4. ReShade: снова запустите его установщик и выберите удаление.
@@ -199,7 +201,7 @@ affiliated with EA.
 - Ультраширокий экран проверен в окне 3440x1440 на мониторе 16:9. Видеоролики остаются 16:9.
 - Сама игра один раз вылетела примерно за десять часов («pure virtual function call», внутри движка,
   сразу после сохранения на контрольной точке). Лог и дамп падения на мод не указывали.
-- Файл настроек и лог: `Binaries\MoH2010.PCFix.ini`, `Binaries\MoH2010.PCFix.log`. Прикладывайте лог к
+- Файл настроек и лог: `Binaries\MoH2010.LazmFix.ini`, `Binaries\MoH2010.LazmFix.log`. Прикладывайте лог к
   сообщениям об ошибках.
 
 ### На чём проверено

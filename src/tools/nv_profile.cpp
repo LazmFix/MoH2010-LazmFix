@@ -1,11 +1,11 @@
-// MoH2010.NvProfile.exe: sets driver anti-aliasing (4x MSAA + sparse grid supersampling) in the NVIDIA
+// MoH2010.LazmFix.NvProfile.exe: sets driver anti-aliasing (4x MSAA + sparse grid supersampling) in the NVIDIA
 // profile that owns moh.exe, through NvAPI DRS - the same calls NVIDIA Profile Inspector makes.
 // Only that profile is changed; the global/base profile is never written. Values the profile had
 // before are saved to a backup file next to this exe and "restore" puts them back.
 //
-//   MoH2010.NvProfile.exe show    [path\to\moh.exe]
-//   MoH2010.NvProfile.exe apply   [path\to\moh.exe] [--sgssaa 2|4|8] [--compat 0x080000C1]
-//   MoH2010.NvProfile.exe restore [path\to\moh.exe]
+//   MoH2010.LazmFix.NvProfile.exe show    [path\to\moh.exe]
+//   MoH2010.LazmFix.NvProfile.exe apply   [path\to\moh.exe] [--sgssaa 2|4|8] [--compat 0x080000C1]
+//   MoH2010.LazmFix.NvProfile.exe restore [path\to\moh.exe]
 #include <windows.h>
 
 #include <cstdarg>
@@ -22,7 +22,7 @@
 
 namespace {
 
-FILE* g_log = nullptr;  // MoH2010.NvProfile.log next to the exe: the ReShade panel shows it.
+FILE* g_log = nullptr;  // MoH2010.LazmFix.NvProfile.log next to the exe: the ReShade panel shows it.
 
 void out(const char* format, ...) {
   va_list args;
@@ -145,7 +145,7 @@ std::wstring backup_path() {
   GetModuleFileNameW(nullptr, self, MAX_PATH);
   std::wstring path(self);
   path.resize(path.find_last_of(L"\\/") + 1);
-  return path + L"MoH2010.NvProfile.backup.txt";
+  return path + L"MoH2010.LazmFix.NvProfile.backup.txt";
 }
 
 void to_unicode(const std::wstring& s, NvAPI_UnicodeString out) {
@@ -206,7 +206,7 @@ int wmain(int argc, wchar_t** argv) {
     g_log = _wfopen(log_path.c_str(), L"w");
   }
   if (argc < 2) {
-    out("usage: MoH2010.NvProfile.exe show|apply|restore [path\\to\\moh.exe] [--sgssaa 2|4|8] [--compat 0x..]\n");
+    out("usage: MoH2010.LazmFix.NvProfile.exe show|apply|restore [path\\to\\moh.exe] [--sgssaa 2|4|8] [--compat 0x..]\n");
     return 1;
   }
   std::wstring command = argv[1];
@@ -241,13 +241,13 @@ int wmain(int argc, wchar_t** argv) {
     // No driver profile knows moh.exe: make a separate one for it (still not the global profile).
     NVDRS_PROFILE np = {};
     np.version = NVDRS_PROFILE_VER;
-    to_unicode(L"Medal of Honor (2010) - MoH2010.PCFix", np.profileName);
+    to_unicode(L"Medal of Honor (2010) - MoH2010.LazmFix", np.profileName);
     if ((st = api.create_profile(session, &np, &profile)) != NVAPI_OK) return fail("DRS_CreateProfile", st);
     NVDRS_APPLICATION na = {};
     na.version = NVDRS_APPLICATION_VER;
     to_unicode(L"moh.exe", na.appName);
     if ((st = api.create_application(session, profile, &na)) != NVAPI_OK) return fail("DRS_CreateApplication", st);
-    out("created profile \"Medal of Honor (2010) - MoH2010.PCFix\" for moh.exe\n");
+    out("created profile \"Medal of Honor (2010) - MoH2010.LazmFix\" for moh.exe\n");
   } else if (st != NVAPI_OK) {
     return fail("DRS_FindApplicationByName", st);
   }
@@ -281,7 +281,7 @@ int wmain(int argc, wchar_t** argv) {
     std::wstring backup = backup_path();
     if (GetFileAttributesW(backup.c_str()) == INVALID_FILE_ATTRIBUTES) {
       std::ofstream file(backup);
-      file << "# profile values before MoH2010.NvProfile apply: id in_profile value\n";
+      file << "# profile values before MoH2010.LazmFix.NvProfile apply: id in_profile value\n";
       for (NvU32 id : kShownIds) {
         Current c = read_setting(api, session, profile, id, nullptr);
         char line[64];

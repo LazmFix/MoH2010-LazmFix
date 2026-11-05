@@ -1,6 +1,6 @@
 # Development notes (Russian)
 
-> Working notes from making the fix, in Russian. Some features described here (mouse polling rate meter, info overlay, calibration hotkeys, Ctrl+End / Ctrl+PgUp hotkeys) were removed in 0.9.0 to keep the release small. The user-facing description is in the main README.
+> Working notes from making the fix, in Russian. The mod was called "MoH 2010 PC Fix" (files MoH2010.PCFix.*) until 0.9.0; it is now MoH 2010 LazmFix (MoH2010.LazmFix.*). Some features described here (mouse polling rate meter, info overlay, calibration hotkeys, Ctrl+End / Ctrl+PgUp hotkeys) were removed in 0.9.0 to keep the release small. The user-facing description is in the main README.
 
 # MoH 2010 PC Fix
 

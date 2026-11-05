@@ -1,4 +1,4 @@
-# Removes MoH 2010 PC Fix (game closed): takes the newest backup in Binaries\MoH2010.PCFix.backup\,
+# Removes MoH 2010 LazmFix (game closed): takes the newest backup in Binaries\MoH2010.LazmFix.backup\,
 # deletes the files the install created, puts back the ones it replaced and reverts the ini keys it
 # changed (only where they still have the value the install wrote).
 #
@@ -17,14 +17,14 @@ $bin = Join-Path $GameDir 'Binaries'
 if (Get-Process moh -ErrorAction SilentlyContinue) { throw 'Medal of Honor is running. Close it first.' }
 
 # Driver anti-aliasing set from the ReShade panel: put the NVIDIA game profile back first (UAC prompt).
-$nvTool = Join-Path $bin 'MoH2010.NvProfile.exe'
-if ((Test-Path $nvTool) -and (Test-Path (Join-Path $bin 'MoH2010.NvProfile.backup.txt'))) {
+$nvTool = Join-Path $bin 'MoH2010.LazmFix.NvProfile.exe'
+if ((Test-Path $nvTool) -and (Test-Path (Join-Path $bin 'MoH2010.LazmFix.NvProfile.backup.txt'))) {
   Write-Host 'Restoring the NVIDIA profile "Medal of Honor" (administrator prompt)...'
   try { Start-Process $nvTool -ArgumentList 'restore' -WorkingDirectory $bin -Verb RunAs -Wait -WindowStyle Hidden }
   catch { Write-Warning "NVIDIA profile not restored: $($_.Exception.Message). Run '$nvTool restore' as administrator." }
 }
-foreach ($f in 'MoH2010.NvProfile.log') { Remove-Item (Join-Path $bin $f) -ErrorAction SilentlyContinue }
-$root = Join-Path $bin 'MoH2010.PCFix.backup'
+foreach ($f in 'MoH2010.LazmFix.NvProfile.log') { Remove-Item (Join-Path $bin $f) -ErrorAction SilentlyContinue }
+$root = Join-Path $bin 'MoH2010.LazmFix.backup'
 $backups = @(Get-ChildItem $root -Directory -ErrorAction SilentlyContinue | Sort-Object Name |
   Where-Object { Test-Path (Join-Path $_.FullName 'install.json') })
 if ($backups.Count -eq 0) { throw "No backup found in $root" }
@@ -60,7 +60,7 @@ foreach ($name in $fileState.Keys) {
   }
 }
 $manifest = @{ ini = @($iniState.Values | ForEach-Object { $_.new = $lastNew["$($_.file)|$($_.section)|$($_.key)"]; $_ }) }
-Get-ChildItem $bin -Filter 'MoH2010.PCFix.log' -ErrorAction SilentlyContinue | Remove-Item -Force
+Get-ChildItem $bin -Filter 'MoH2010.LazmFix.log' -ErrorAction SilentlyContinue | Remove-Item -Force
 
 # Intro videos hidden by the panel's "Skip intro videos".
 Get-ChildItem (Join-Path $GameDir 'MOHAGame\CookedMovies') -Filter '*.vp6.skip' -ErrorAction SilentlyContinue | ForEach-Object {

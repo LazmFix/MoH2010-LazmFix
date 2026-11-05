@@ -122,7 +122,7 @@ void run(HMODULE self) {
   if (!file_exists(game_dir + L"\\MOHAGame")) {
     return;
   }
-  const std::wstring ini = join_path(binaries, L"MoH2010.PCFix.ini");
+  const std::wstring ini = join_path(binaries, L"MoH2010.LazmFix.ini");
   const std::wstring config = config_dir();
   const std::wstring engine = config + L"\\MOHAEngine.ini";
   const std::wstring input = config + L"\\MOHAInput.ini";
