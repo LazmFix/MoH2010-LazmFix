@@ -36,8 +36,11 @@ Part of [LazmFix](https://github.com/LazmFix): my fixes for PC games.
   shadows, no depth of field, 1x texture filtering). On its first start the mod applies the game's own
   "High end" preset with 16x filtering and sharper shadows. The frame rate cap (62 FPS in the game) is
   set to your monitor's refresh rate.
-- **Mouse.** The game reads the mouse raw (DirectInput). The mod turns off the game's mouse smoothing on
-  its first start. Optional: a sensitivity multiplier, the game's slow-movement curve off, aim assist off.
+- **Raw mouse input.** The game reads the mouse through DirectInput: raw sensor counts, without Windows
+  pointer speed and acceleration, every report at the mouse's full polling rate (tested with a 1000 Hz
+  mouse). The mod keeps it that way (its multiplier carries fractions over, nothing is rounded away) and
+  turns off the game's mouse smoothing on its first start. Optional: a sensitivity multiplier, the game's
+  slow-movement curve off, aim assist off.
 - **CoD4 / MW Remastered preset** (off by default): the same turn per mouse count as MWR at your MWR
   sensitivity, the view of cg_fov 65, and aiming like MWR (sensitivity follows the zoom, MWR-sized zoom).
 - **Key names in English** in the game's hints ("WASD", not "ЦФЫВ" with a Russian layout).
@@ -104,7 +107,7 @@ mod set; change them in the game menu or the panel.
 | CPU / RAM | Intel Core i9-14900K, 64 GB |
 | GPU | NVIDIA GeForce RTX 4080 SUPER, driver 621.01 |
 | Monitor | MSI MPG322UX OLED, 3840x2160 at 240 Hz |
-| Mouse | Razer Basilisk V3 (the device that made the game hang) |
+| Mouse | Razer Basilisk V3, 1000 Hz polling (the device that made the game hang) |
 | ReShade | 6.8.0 with add-on support |
 
 ### Building from source
@@ -143,8 +146,11 @@ affiliated with EA.
   теней, без глубины резкости, фильтрация текстур 1x). При первом запуске мод ставит пресет самой игры
   «High end» с фильтрацией 16x и более чёткими тенями. Ограничение FPS (в игре 62) — по частоте
   монитора.
-- **Мышь.** Игра читает мышь напрямую (DirectInput). При первом запуске мод выключает сглаживание мыши
-  игры. По желанию: множитель чувствительности, без кривой медленных движений, без помощи в прицеливании.
+- **Сырой ввод мыши.** Игра читает мышь через DirectInput: сырые отсчёты сенсора, без скорости указателя
+  и ускорения Windows, каждый репорт на полной частоте опроса мыши (проверено с мышью 1000 Гц). Мод это
+  сохраняет (его множитель переносит дробные остатки, ничего не округляется) и при первом запуске
+  выключает сглаживание мыши игры. По желанию: множитель чувствительности, без кривой медленных движений,
+  без помощи в прицеливании.
 - **Пресет CoD4 / MW Remastered** (по умолчанию выключен): тот же поворот на отсчёт мыши, что в MWR при
   вашей чувствительности MWR, обзор как cg_fov 65, прицеливание как в MWR (замедление мыши следует за
   зумом, зум как в MWR).
@@ -213,7 +219,7 @@ affiliated with EA.
 | Процессор / память | Intel Core i9-14900K, 64 ГБ |
 | Видеокарта | NVIDIA GeForce RTX 4080 SUPER, драйвер 621.01 |
 | Монитор | MSI MPG322UX OLED, 3840x2160, 240 Гц |
-| Мышь | Razer Basilisk V3 (из-за неё игра и зависала) |
+| Мышь | Razer Basilisk V3, опрос 1000 Гц (из-за неё игра и зависала) |
 | ReShade | 6.8.0 с поддержкой дополнений |
 
 ### Сборка из исходников
