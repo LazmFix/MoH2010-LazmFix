@@ -4,27 +4,34 @@ Full description, updates and bug reports / Описание, обновлени
 https://github.com/LazmFix/MoH2010-LazmFix
 
 INSTALL
-1. Install ReShade "with full add-on support" (reshade.me) for Binaries\moh.exe, Direct3D 9.
-2. Extract this zip into the game folder (the one with Binaries and MOHAGame).
+1. Install ReShade 6.8.0 or newer "with full add-on support" (reshade.me) for Binaries\moh.exe, Direct3D 9.
+2. Copy the Binaries folder of this zip into the game folder (the one with Binaries and MOHAGame),
+   merging it with the game's Binaries: dinput8.dll and the MoH2010.LazmFix files must end up next
+   to moh.exe. Windows' "Extract All" suggests a new folder named after the zip: the mod does not
+   load from there.
 3. Start the game from Steam. Home -> Add-ons -> MoH 2010 LazmFix for the settings.
    If you never started the game before, start it a second time: the game creates its settings
    on its first start, and the mod applies its display and graphics settings from then on.
 
+The files are not digitally signed: SmartScreen or an antivirus may warn about them.
+
 UNINSTALL
-Delete from Binaries: dinput8.dll, MoH2010.LazmFix.addon32, MoH2010.LazmFix.ini, MoH2010.LazmFix.log,
-MoH2010.LazmFix.NvProfile.exe (first press "Undo" under Anti-aliasing in the panel if you used it).
-Intro videos: Steam -> Verify integrity of game files.
+Delete from Binaries: dinput8.dll and all MoH2010.LazmFix files (first press "Undo" under
+Anti-aliasing in the panel if you used it). Intro videos: Steam -> Verify integrity of game files.
 
 ---
 
 УСТАНОВКА
-1. Установите ReShade «with full add-on support» (reshade.me) для Binaries\moh.exe, Direct3D 9.
-2. Распакуйте этот zip в папку игры (ту, где Binaries и MOHAGame).
+1. Установите ReShade 6.8.0 или новее «with full add-on support» (reshade.me) для Binaries\moh.exe, Direct3D 9.
+2. Скопируйте папку Binaries из этого архива в папку игры (ту, где Binaries и MOHAGame), объединив
+   с папкой Binaries игры: dinput8.dll и файлы MoH2010.LazmFix должны оказаться рядом с moh.exe.
+   «Извлечь всё» в Windows предлагает новую папку с именем архива — оттуда мод не загрузится.
 3. Запустите игру из Steam. Home -> Дополнения -> MoH 2010 LazmFix — настройки.
    Если вы ни разу не запускали игру, запустите её второй раз: файлы настроек игра создаёт
    при первом запуске, а настройки экрана и графики мод применяет начиная со следующего.
 
+Файлы не подписаны цифровой подписью: SmartScreen или антивирус могут о них предупредить.
+
 УДАЛЕНИЕ
-Удалите из Binaries: dinput8.dll, MoH2010.LazmFix.addon32, MoH2010.LazmFix.ini, MoH2010.LazmFix.log,
-MoH2010.LazmFix.NvProfile.exe (сначала нажмите «Отменить» в разделе «Сглаживание» панели, если пользовались).
-Заставки: Steam -> Проверить целостность файлов игры.
+Удалите из Binaries: dinput8.dll и все файлы MoH2010.LazmFix (сначала нажмите «Отменить» в разделе
+«Сглаживание» панели, если пользовались). Заставки: Steam -> Проверить целостность файлов игры.

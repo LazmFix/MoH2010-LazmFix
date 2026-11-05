@@ -53,7 +53,7 @@ The multiplayer is a separate program and is not affected.
 ### Requirements
 
 - Medal of Honor (2010), **Steam** version (`Binaries\moh.exe` 1.0.4.0). Other versions were not tested.
-- [ReShade](https://reshade.me) **with full add-on support**, 6.x (for the settings panel and the
+- [ReShade](https://reshade.me) **with full add-on support**, 6.8.0 or newer (for the settings panel and the
   borderless window). Without ReShade the fixes still work with the settings from the ini file, and the
   game runs in exclusive fullscreen at the desktop resolution instead of borderless.
 
@@ -66,9 +66,11 @@ The multiplayer is a separate program and is not affected.
    2. Run it, choose `Binaries\moh.exe` in the game folder.
    3. Choose **Direct3D 9**.
    4. Effects are optional: you can skip them all.
-3. Download `MoH2010-LazmFix-<version>.zip` from [Releases](../../releases) and extract it **into the game
-   folder** (the one with `Binaries`). Four files go to `Binaries\`: `dinput8.dll`,
-   `MoH2010.LazmFix.addon32`, `MoH2010.LazmFix.ini`, `MoH2010.LazmFix.NvProfile.exe`.
+3. Download `MoH2010-LazmFix-<version>.zip` from [Releases](../../releases). Open it and copy its
+   `Binaries` folder **into the game folder**, merging it with the game's `Binaries`. Four files go next
+   to `moh.exe`: `dinput8.dll`, `MoH2010.LazmFix.addon32`, `MoH2010.LazmFix.ini`,
+   `MoH2010.LazmFix.NvProfile.exe`. Careful with Windows' "Extract All": it suggests a new folder named
+   after the zip, and the mod does not load from there.
 4. Start the game from Steam. Steam may show the CD key window: close it. If you never started the game
    before, start it a second time: the game creates its settings files on its first start, and the mod
    applies its display and graphics settings from then on.
@@ -95,6 +97,8 @@ mod set; change them in the game menu or the panel.
 - Ultrawide was checked at 3440x1440 in a window on a 16:9 monitor. Pre-rendered videos stay 16:9.
 - The game itself crashed once in about ten hours ("pure virtual function call", inside the engine,
   right after a checkpoint save). The log and crash dump did not point at the mod.
+- The files are not digitally signed: Windows SmartScreen or an antivirus may warn about them (a
+  `dinput8.dll` next to a game is a common false positive). The source code is in this repository.
 - Settings file and log: `Binaries\MoH2010.LazmFix.ini`, `Binaries\MoH2010.LazmFix.log`. Please attach the
   log to bug reports.
 
@@ -116,8 +120,9 @@ Visual Studio 2022 (C++ x86 tools) and CMake. `tools\build.ps1` builds and runs 
 `tools\package.ps1` makes the release zip. Technical notes: [docs/RE_NOTES.md](docs/RE_NOTES.md),
 [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) (Russian).
 
-License: MIT ([LICENSE](LICENSE)). Medal of Honor is a trademark of Electronic Arts; this project is not
-affiliated with EA.
+License: MIT ([LICENSE](LICENSE)); third-party code in `third_party/` keeps its own license (Dear ImGui
+MIT, ReShade add-on headers BSD 3-Clause, NVIDIA NVAPI headers MIT). Medal of Honor is a trademark of
+Electronic Arts; this project is not affiliated with EA.
 
 ---
 
@@ -164,7 +169,7 @@ affiliated with EA.
 ### Что нужно
 
 - Medal of Honor (2010), версия **Steam** (`Binaries\moh.exe` 1.0.4.0). Другие версии не проверялись.
-- [ReShade](https://reshade.me) **с полной поддержкой дополнений (add-on support)**, 6.x — для панели
+- [ReShade](https://reshade.me) **с полной поддержкой дополнений (add-on support)**, 6.8.0 или новее — для панели
   настроек и окна без рамки. Без ReShade исправления работают с настройками из ini-файла, а игра
   запускается в эксклюзивном полном экране с разрешением рабочего стола вместо окна без рамки.
 
@@ -177,9 +182,11 @@ affiliated with EA.
    2. Запустите установщик и выберите `Binaries\moh.exe` в папке игры.
    3. Выберите **Direct3D 9**.
    4. Эффекты не обязательны, их можно пропустить.
-3. Скачайте `MoH2010-LazmFix-<версия>.zip` в [Releases](../../releases) и распакуйте **в папку игры** (ту,
-   где `Binaries`). В `Binaries\` попадут четыре файла: `dinput8.dll`, `MoH2010.LazmFix.addon32`,
-   `MoH2010.LazmFix.ini`, `MoH2010.LazmFix.NvProfile.exe`.
+3. Скачайте `MoH2010-LazmFix-<версия>.zip` в [Releases](../../releases). Откройте архив и скопируйте его
+   папку `Binaries` **в папку игры**, объединив с папкой `Binaries` игры. Рядом с `moh.exe` окажутся
+   четыре файла: `dinput8.dll`, `MoH2010.LazmFix.addon32`, `MoH2010.LazmFix.ini`,
+   `MoH2010.LazmFix.NvProfile.exe`. Осторожно с «Извлечь всё» в Windows: оно предлагает новую папку с
+   именем архива, и оттуда мод не загрузится.
 4. Запустите игру из Steam. Steam может показать окно с CD-ключом — закройте его. Если вы ни разу не
    запускали игру, запустите её второй раз: файлы настроек игра создаёт при первом запуске, а настройки
    экрана и графики мод применяет начиная со следующего.
@@ -207,6 +214,8 @@ affiliated with EA.
 - Ультраширокий экран проверен в окне 3440x1440 на мониторе 16:9. Видеоролики остаются 16:9.
 - Сама игра один раз вылетела примерно за десять часов («pure virtual function call», внутри движка,
   сразу после сохранения на контрольной точке). Лог и дамп падения на мод не указывали.
+- Файлы не подписаны цифровой подписью: Windows SmartScreen или антивирус могут о них предупредить
+  (`dinput8.dll` рядом с игрой — частый ложный повод). Исходный код — в этом репозитории.
 - Файл настроек и лог: `Binaries\MoH2010.LazmFix.ini`, `Binaries\MoH2010.LazmFix.log`. Прикладывайте лог к
   сообщениям об ошибках.
 
@@ -228,4 +237,6 @@ Visual Studio 2022 (C++ x86) и CMake. `tools\build.ps1` собирает и з�
 делает zip релиза. Технические заметки: [docs/RE_NOTES.md](docs/RE_NOTES.md),
 [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
-Лицензия: MIT ([LICENSE](LICENSE)). Medal of Honor — товарный знак Electronic Arts; проект не связан с EA.
+Лицензия: MIT ([LICENSE](LICENSE)); сторонний код в `third_party/` — под своими лицензиями (Dear ImGui MIT,
+заголовки ReShade BSD 3-Clause, заголовки NVIDIA NVAPI MIT). Medal of Honor — товарный знак Electronic Arts;
+проект не связан с EA.
